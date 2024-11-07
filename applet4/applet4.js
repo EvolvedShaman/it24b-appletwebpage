@@ -53,3 +53,26 @@ class StudentList {
 }
 
 const studentList = new StudentList('applet4.json');
+
+document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const query = event.target.querySelector('input[type="search"]').value.toLowerCase();
+    
+    const results = studentList.students.filter(item => {
+        const fullName = item.student_name + ' ' + item.student_age;
+        return fullName.toLowerCase().includes(query);
+    });
+
+    displayResults(results);
+});
+
+function displayResults(results) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = ''; // Clear previous results
+
+    results.forEach(result => {
+        const resultElement = document.createElement('div');
+        resultElement.textContent = `${result.student_name} ${result.student_age}`;
+        resultsContainer.appendChild(resultElement);
+    });
+}
