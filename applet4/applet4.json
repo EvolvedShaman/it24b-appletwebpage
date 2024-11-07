@@ -1,26 +1,26 @@
-[
+ [
     {
-        "student_name": "Wayne Barb",
+        "student_name": "Wayne",
         "student_age": "19",
         "student_program": "computer science",
-        "student_yearlevel": "First Year"
+        "student_yearlevel": "1st Year"
     },
     {
-        "student_name": "Hello Kitty",
+        "student_name": "jane",
         "student_age": "25",
-        "student_program": "Multimedia",
-        "student_yearlevel": "fourth year"
+        "student_program": "Education",
+        "student_yearlevel": "4th Year"
     },
     {
-        "student_name": "Lee Avos",
+        "student_name": "john",
         "student_age": "21",
         "student_program": "business ad",
-        "student_yearlevel": "second year"
+        "student_yearlevel": "2nd Year"
     },
     {
-        "student_name": "Lemon C2",
+        "student_name": "mary ann",
         "student_age": "23",
         "student_program": "electrical engineering",
-        "student_yearlevel": "third year"
+        "student_yearlevel": "3rd Year"
     }
-]
+] 

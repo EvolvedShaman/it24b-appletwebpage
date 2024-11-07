@@ -25,7 +25,7 @@ class StudentList {
         targetContainer.innerHTML = students.map(student => 
             `<button class="btn btn-primary" style="margin-top:15px; 
                                                     width:25rem">
-                 ${student.student_name} | Age: ${student.student_age} | Program: ${student.program} | Year Level: ${student.yearLevel}
+                 ${student.student_name} | Age: ${student.student_age} | Program: ${student.student_program} | Year Level: ${student.student_yearlevel}
             </button><br>`
         ).join('');
     }
@@ -43,8 +43,8 @@ class StudentList {
 
     filterStudents(query, searchListContainer) {
         const filteredStudents = this.students.filter(student => {
-            console.log(student); 
-            return fullName.toLowerCase().includes(query.toLowerCase());
+            const searchText = `${student.student_name} ${student.student_age} ${student.student_program} ${student.student_yearlevel}`.toLowerCase();
+            return searchText.includes(query.toLowerCase()); 
         });
 
         const studentsToRender = query ? filteredStudents : this.students;
@@ -56,23 +56,8 @@ const studentList = new StudentList('applet4.json');
 
 document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     event.preventDefault();
-    const query = event.target.querySelector('input[type="search"]').value.toLowerCase();
+    const query = event.target.querySelector('input[type="search"]').value;
+    const searchListContainer = document.getElementById('studentSearchList');
     
-    const results = studentList.students.filter(item => {
-        const fullName = item.student_name + ' ' + item.student_age;
-        return fullName.toLowerCase().includes(query);
-    });
-
-    displayResults(results);
+    studentList.filterStudents(query, searchListContainer);
 });
-
-function displayResults(results) {
-    const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = ''; // Clear previous results
-
-    results.forEach(result => {
-        const resultElement = document.createElement('div');
-        resultElement.textContent = `${result.student_name} ${result.student_age}`;
-        resultsContainer.appendChild(resultElement);
-    });
-}

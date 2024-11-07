@@ -1,6 +1,7 @@
 class Logger {
     constructor() {
-        this.logCount = 0;
+        this.logCount = parseInt(localStorage.getItem('logCount')) || 0;
+        this.updateLogDisplay();
 
         this.logEvent = this.logEvent.bind(this);
         this.clearLogs = this.clearLogs.bind(this);
@@ -9,9 +10,14 @@ class Logger {
         document.getElementById("clearButton").addEventListener("click", this.clearLogs);
     }
 
+    updateLogDisplay() {
+        document.getElementById("logCount").textContent = "Total Logs: " + this.logCount;
+        localStorage.setItem('logCount', this.logCount);
+    }
+
     logEvent() {
         this.logCount++;
-        document.getElementById("logCount").textContent = "Total Logs: " + this.logCount;
+        this.updateLogDisplay();
 
         const cardContainer = document.getElementById("cardContainer");
         const logEntry = document.createElement("div");
@@ -22,10 +28,11 @@ class Logger {
 
     clearLogs() {
         this.logCount = 0;
-        document.getElementById("logCount").textContent = "Total Logs: " + this.logCount;
+        this.updateLogDisplay();
         document.getElementById("cardContainer").innerHTML = '';
     }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     new Logger();
 }); 
