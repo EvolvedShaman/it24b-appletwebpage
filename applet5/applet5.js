@@ -68,4 +68,4 @@ class WeatherService extends WeatherApp {
     }
 }
 
-const weatherApp = new WeatherService();
+const weatherApp = new WeatherService(); 
