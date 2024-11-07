@@ -28,4 +28,4 @@ class Logger {
 }
 document.addEventListener("DOMContentLoaded", () => {
     new Logger();
-});
+}); 
